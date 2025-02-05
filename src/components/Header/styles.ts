@@ -2,7 +2,8 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.header`
   background-color: #f8fafc;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05); */
+  box-shadow: 3px 1px 10px black;
 `;
 
 export const HeaderContent = styled.div`

@@ -32,6 +32,7 @@ export const ImageContainer = styled.div`
   aspect-ratio: 2/3;
   cursor: pointer;
   padding: 0.5rem;
+  box-shadow: 3px 1px 5px black;
 
   &:hover > div {
     transform: rotateY(180deg);
@@ -85,16 +86,19 @@ export const Image = styled.img`
 `;
 
 export const BackContent = styled.div`
-  color: white;
+  color: #000;
   font-weight: 600;
+
   
   h3 {
     font-size: 1.25rem;
     margin-bottom: 0.5rem;
+    
   }
   
   p {
     font-size: 0.875rem;
     opacity: 0.9;
+    font-family: "Handlee", serif;
   }
 `;

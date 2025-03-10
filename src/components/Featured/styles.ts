@@ -106,7 +106,7 @@ export const ProductCard = styled.div`
 
   &:hover {
     transform: translateY(-4px) scale(1.02);
-    /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
   }
 
   &::after {

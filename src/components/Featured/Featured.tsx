@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ChevronDown } from 'lucide-react';
-import { BackgroundContainer, FeaturedSection, ProductCard, ProductCardContainer, ProductGrid, ProductImage, ProductInfo, ProductName, ProductPrice, ShowMoreButton, Title } from './styles';
+import { BackgroundContainer, FeaturedSection, ProductCard, ProductGrid, ProductImage, ProductInfo, ProductName, ProductPrice, ShowMoreButton, Title } from './styles';
+import ProductModal from '../ProductModal/ProductModal'
 import image2 from '../../assets/FeaturedPic/img2.jpg'
 import image3 from '../../assets/FeaturedPic/img3.jpg'
 import image4 from '../../assets/FeaturedPic/img4.jpg'
@@ -18,7 +19,8 @@ import image13 from '../../assets/FeaturedPic/img13.jpg'
 
 export function Featured() {
   const [showMore, setShowMore] = useState(false);
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const [selectedProduct, setSelectedProduct] = useState<null | any>(null);
   const products = [
     {
       id: 1,
@@ -102,16 +104,13 @@ export function Featured() {
         <Title>Destaque</Title>
         <ProductGrid>
           {displayedProducts.map((product) => (
-            <ProductCardContainer>
-              <ProductCard key={product.id}>
-                <ProductImage src={product.image} alt={product.name} />
-                <ProductInfo>
-                  <ProductName>{product.name}</ProductName>
-                  <ProductPrice>{product.price}</ProductPrice>
-                </ProductInfo>
-              </ProductCard>
-            </ProductCardContainer>
-
+            <ProductCard key={product.id} onClick={() => setSelectedProduct(product)}>
+              <ProductImage src={product.image} alt={product.name} />
+              <ProductInfo>
+                <ProductName>{product.name}</ProductName>
+                <ProductPrice>{product.price}</ProductPrice>
+              </ProductInfo>
+            </ProductCard>
           ))}
         </ProductGrid>
         {!showMore && (
@@ -121,6 +120,12 @@ export function Featured() {
           </ShowMoreButton>
         )}
       </BackgroundContainer>
+      {selectedProduct && (
+        <ProductModal
+          product={selectedProduct}
+          onClose={() => setSelectedProduct(null)}
+        />
+      )}
     </FeaturedSection>
   );
 };

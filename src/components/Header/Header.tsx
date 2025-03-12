@@ -1,7 +1,12 @@
 import { Phone, Search, ShoppingCart } from "lucide-react";
 import { CartBadge, CartButton, HeaderContainer, HeaderContent, HeaderInner, LogoContainer, PhoneContainer, PhoneText, SearchContainer, SearchIconWrapper, SearchInput, SearchWrapper } from "./styles";
+import { useCart } from "../../context/CartContext";
+import { useNavigate } from "react-router-dom";
 
 export function Header() {
+    const { items } = useCart()
+    const navigate = useNavigate()
+    const itemCount = items.reduce((sum, item) => sum + item.quantity, 0)
     return (
       <HeaderContainer>
         <HeaderContent>
@@ -28,9 +33,9 @@ export function Header() {
               </SearchWrapper>
             </SearchContainer>
   
-            <CartButton>
+            <CartButton onClick={() => navigate('/checkout')}>
               <ShoppingCart size={24} color="#1f2937" />
-              <CartBadge>0</CartBadge>
+              {itemCount > 0 && <CartBadge>{itemCount}</CartBadge>}
             </CartButton>
           </HeaderInner>
         </HeaderContent>

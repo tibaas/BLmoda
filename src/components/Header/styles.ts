@@ -96,6 +96,7 @@ export const CartButton = styled.button`
   padding: 0.5rem;
   border-radius: 9999px;
   transition: background-color 0.2s;
+  cursor: pointer;
 
   &:hover {
     background-color: #f3f4f6;

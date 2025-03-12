@@ -158,6 +158,11 @@ export const BuyButton = styled.button`
   width: 100%;
   margin-top: 1rem;
 
+  gap: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   &:hover {
     background-color: #E48F4D;
     transform: translateY(-2px);

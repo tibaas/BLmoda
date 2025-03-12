@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { BuyButton, CloseButton, ImageSection, MainImage, ModalContent, ModalOverlay, ProductContainer, ProductDescription, ProductInfo, ProductPrice, ProductTitle, SizeButton, SizeSelector, Thumbnail, ThumbnailContainer } from "./styles";
-import { X } from "lucide-react";
+import { ShoppingCart, X } from "lucide-react";
+import { useCart } from "../../context/CartContext";
 
 
 interface ProductModalProps {
@@ -18,8 +19,8 @@ interface ProductModalProps {
 const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedSize, setSelectedSize] = useState<string>('M');
+  const { addItem } = useCart();
 
-  // Additional images for the product (including main image)
   const allImages = [
     product.image,
     ...(product.additionalImages || [
@@ -32,8 +33,15 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
   const sizes = ['P', 'M', 'G', 'GG'];
 
   const handleBuy = () => {
-    // Implement buy functionality
-    console.log('Buy clicked:', { product, selectedSize });
+    addItem({
+      id: product.id,
+      name: product.name,
+      price: product.price,
+      image: product.image,
+      size: selectedSize,
+      quantity: 1
+    });
+    onClose();
   };
 
   return (
@@ -85,7 +93,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             </div>
 
             <BuyButton onClick={handleBuy}>
-              Comprar Agora
+              Adicionar ao carring <ShoppingCart size={25} />
             </BuyButton>
           </ProductInfo>
         </ProductContainer>

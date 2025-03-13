@@ -93,7 +93,7 @@ const ProductModal: React.FC<ProductModalProps> = ({ product, onClose }) => {
             </div>
 
             <BuyButton onClick={handleBuy}>
-              Adicionar ao carring <ShoppingCart size={25} />
+              Adicionar ao carrinho <ShoppingCart size={25} />
             </BuyButton>
           </ProductInfo>
         </ProductContainer>

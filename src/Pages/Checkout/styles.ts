@@ -17,6 +17,7 @@ export const Grid = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 2rem;
+ 
   
   @media (min-width: 1024px) {
     grid-template-columns: 2fr 1fr;
@@ -94,6 +95,7 @@ export const Summary = styled.div`
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   height: fit-content;
+  
 `;
 
 export const SummaryRow = styled.div`
@@ -152,4 +154,39 @@ export const ProductGrid = styled.div`
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 2rem;
   margin-top: 1rem;
+  
+`;
+
+export const ProductCard = styled.div`
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: transform 0.2s;
+
+  &:hover {
+    transform: translateY(-4px);
+  }
+`;
+
+export const ProductImage = styled.img`
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+`;
+
+export const ProductInfo = styled.div`
+  padding: 1rem;
+`;
+
+export const ProductName = styled.h3`
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+`;
+
+export const ProductPrice = styled.span`
+  color: #F4A460;
+  font-weight: 600;
 `;
